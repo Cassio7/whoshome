@@ -13,13 +13,13 @@ export async function GET() {
 }
 
 export async function PUT({ request }) {
-	const { id, ...updateData } = await request.json();
+	const { id, active } = await request.json();
 
 	if (!id) {
 		return json({ error: 'ID is required' }, { status: 400 });
 	}
 
-	const result = await db.update(person).set(updateData).where(eq(person.id, id)).returning();
+	const result = await db.update(person).set(active).where(eq(person.id, id)).returning();
 
 	if (result.length === 0) {
 		return json({ error: 'Person not found' }, { status: 404 });
