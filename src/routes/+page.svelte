@@ -1,9 +1,14 @@
 <script lang="ts">
+	import type { Persona } from '$lib';
+	import { Button } from '$lib/components/ui/button/index.js';
+
 	let { data } = $props();
 
-	export async function updatePersona(id: number, active: boolean) {
+	// Crea una copia reattiva dei dati
+	let persons = $state(data.persons);
 
-		const response = await fetch(`/api/persons/`, {
+	async function updatePersona(id: number, active: boolean) {
+		const response = await fetch(`/api/persons`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json'
@@ -18,18 +23,31 @@
 			throw new Error('Failed to update person');
 		}
 
+		// Aggiorna lo stato reattivo
+		const personIndex = persons.findIndex((p) => p.id === id);
+		if (personIndex !== -1) {
+			persons[personIndex].active = active;
+		}
+
 		return response.json();
-		
+	}
+
+	async function togglePersonaStatus(person: Persona) {
+		try {
+			await updatePersona(person.id, !person.active);
+		} catch (error) {
+			console.log(error);
+		}
 	}
 </script>
 
-<p>Home</p>
-<div class="grid grid-cols-4 gap-4 p-20">
-	{#each data.persons as person}
+<div class="grid grid-cols-4 gap-4 p-10">
+	{#each persons as person}
 		<div>
-			<h3>{person.nome} {person.cognome}</h3>
-			<p>Dispositivo: {person.dispositivo}</p>
+			<h3>{person.name} {person.surname}</h3>
+			<p>Dispositivo: {person.device}</p>
 			<p>Attivo: {person.active ? 'Sì' : 'No'}</p>
+			<Button variant="outline" onclick={() => togglePersonaStatus(person)}>Cambia</Button>
 		</div>
 	{/each}
 </div>

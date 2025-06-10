@@ -42,7 +42,9 @@ You can preview the production build with `npm run preview`.
 Usefull commands 
 
  ```bash
+
 npm run db:push
 
 npm run db:studio
+
 ```
