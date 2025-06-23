@@ -5,6 +5,5 @@ export const person = sqliteTable('person', {
 	name: text('name').notNull(),
 	surname: text('surname').notNull(),
 	username: text('username').notNull(),
-	device: text('device').notNull(),
 	active: integer('active', { mode: 'boolean' }).notNull().default(false)
 });

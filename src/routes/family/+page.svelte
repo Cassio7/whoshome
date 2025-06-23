@@ -17,7 +17,6 @@
 						<Table.Head class="w-[100px]">Id</Table.Head>
 						<Table.Head>Name</Table.Head>
 						<Table.Head>Surname</Table.Head>
-						<Table.Head>Device</Table.Head>
 						<Table.Head>At Home</Table.Head>
 						<Table.Head class="text-rigth w-[100px]"></Table.Head>
 					</Table.Row>
@@ -28,7 +27,6 @@
 							<Table.Cell class="font-medium">{person.id}</Table.Cell>
 							<Table.Cell>{person.name}</Table.Cell>
 							<Table.Cell>{person.surname}</Table.Cell>
-							<Table.Cell>{person.device}</Table.Cell>
 							<Table.Cell>{person.active ? '✅' : '❌'}</Table.Cell>
 							<Table.Cell class="text-rigth">
 								<DropdownMenu.Root>

@@ -4,6 +4,5 @@ export interface Persona {
 	name: string;
 	surname: string;
 	username: string;
-	device: string;
 	active: boolean;
 }
