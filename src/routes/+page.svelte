@@ -41,11 +41,10 @@
 	}
 </script>
 
-<div class="grid grid-cols-4 gap-4 m-10">
+<div class="m-20 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 	{#each persons as person}
-		<div class="text-center rounded-lg bg-slate-800 py-5">
+		<div class="rounded-lg bg-slate-800 py-5 text-center">
 			<h3>{person.username}</h3>
-			<p>Dispositivo: {person.device}</p>
 			<p>Attivo: {person.active ? 'Sì' : 'No'}</p>
 			<Button variant="outline" onclick={() => togglePersonaStatus(person)}>Cambia</Button>
 		</div>
