@@ -41,7 +41,7 @@ You can preview the production build with `npm run preview`.
 
 Usefull commands 
 
- ```bash
+```bash
 
 npm run db:push
 
